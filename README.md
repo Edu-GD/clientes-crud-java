@@ -7,7 +7,7 @@ El proyecto ha sido desarrollado para el bootcamp de programación de la academi
 2.Abre el archivo adjunto.
 3.Lee atentamente las instrucciones.
 4.Seleccione la opción que le convenga.
-##*Tenga en cuenta que la base de datos está vacía, se recomienda crear un usuario en primer lugar. 
+Tenga en cuenta que la base de datos está vacía, se recomienda crear un usuario en primer lugar. 
 
 ## Autor
 Creado por Edu Garcia 
