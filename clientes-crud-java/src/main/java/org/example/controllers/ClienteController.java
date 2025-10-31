@@ -10,30 +10,19 @@ public class ClienteController {
 
     // Metodo para agregar un nuevo cliente
     public void agregarNuevoCliente(Cliente cliente) {
-        EntityManager em = ConfigJPA.getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(cliente);
-            em.getTransaction().commit();
-            System.out.println("");
-            System.out.println("✅ Cliente guardado correctamente ✅");
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            System.out.println("⚠\uFE0F Error al guardar el cliente: " + e.getMessage() + " ⚠\uFE0F");
-        } finally {
-            em.close();
-        }
+        EntityManager em = ConfigJPA.getEntityManager(); //Llamamos al EntityManager para poder mandar información al database
+        em.getTransaction().begin(); //Envía la información
+        em.persist(cliente); //Guarda en el database
+        em.getTransaction().commit(); //Confirmación
+        System.out.println("✅ Cliente guardado correctamente ✅");
+        em.close();
     }
 
-    // Metodo para agregar un nuevo cliente
+    // Metodo para agregar listar los clientes
     public List<Cliente> listarClientes() {
         EntityManager em = ConfigJPA.getEntityManager();
-        List<Cliente> clientes;
-        try {
-            clientes = em.createQuery("FROM Cliente ", Cliente.class).getResultList();
-        } finally {
-            em.close();
-        }
+        List<Cliente> clientes = em.createQuery("FROM Cliente", Cliente.class).getResultList();
+        em.close(); // Cerramos manualmente el EntityManager
         return clientes;
     }
 
@@ -52,6 +41,7 @@ public class ClienteController {
         }
     }
 
+    // Metodo para buscar un cliente por por Id (para usarlo en actualizar cliente)
     public Cliente buscarPorId(long id) {
         EntityManager em = ConfigJPA.getEntityManager();
         Cliente cliente = null;
@@ -65,6 +55,7 @@ public class ClienteController {
         return cliente;
     }
 
+    // Metodo para buscar clientes de ''x'' ciudad
     public List<Cliente> buscarClientePorCiudad(String ciudad) {
         EntityManager em = ConfigJPA.getEntityManager();
         List<Cliente> clientes;
@@ -76,6 +67,7 @@ public class ClienteController {
         return clientes;
     }
 
+    //Metodo para eliminar un cliente
     public void eliminarCliente(long id) {
         EntityManager em = ConfigJPA.getEntityManager();
         try {

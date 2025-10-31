@@ -32,7 +32,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    //Constructores del resto de items. A Id no se le crea constructor ya que lo genera automaticamente el Database.
+    //Constructores del resto de items. A Id no se le crea constructor ya que lo genera automaticamente el @GemeratedValue (linea 14)
     public Cliente(String nombre, String apellidos, String sexo, String ciudad, LocalDate fechaNacimiento, String telefono, String email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -66,7 +66,6 @@ public class Cliente {
         if (apellidos != null && !apellidos.isBlank())
             this.apellidos = apellidos;
     }
-
 
     public String getSexo() {
         return sexo;
@@ -118,7 +117,7 @@ public class Cliente {
         }
     }
 
-    //Añado metodo toString.
+    //Añado metodo toString
     @Override
     public String toString() {
         return "Cliente{" +
